@@ -49,7 +49,7 @@ def printRelationText(rel_ids, idx2rel):
 
 def validate_v2(model, device, train_dataset, rel2idx, idx2rel):
     model.eval()
-    data = process_data_file('../../data/QA_data/my_data/my_qanoentity_train.txt', rel2idx, idx2rel)
+    data = process_data_file('my_qanoentity_train.txt', rel2idx, idx2rel)
     num_correct = 0
     count = 0
     correct = []
@@ -138,7 +138,7 @@ def train(batch_size, shuffle, num_workers, nb_epochs, gpu, use_cuda, patience, 
         idx2rel[id] = rel
     print(idx2rel)
     f.close()
-    data = process_data_file('../../data/QA_data/my_data/my_qanoentity_train.txt', rel2idx, idx2rel)
+    data = process_data_file('my_qanoentity_train.txt', rel2idx, idx2rel)
     device = torch.device(gpu if use_cuda else "cpu")
     # print(device)
     dataset = DatasetPruning(data=data, rel2idx=rel2idx, idx2rel=idx2rel)
